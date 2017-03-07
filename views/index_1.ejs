@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Application</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <form action="/adresse" method="POST">
+        Node.js, Express et MongoDB. <br>
+        <input type="text" placeholder="Prénom" name="prenom"> <br>
+        <input type="text" placeholder="Nom" name="nom"> <br>
+        <input type="text" placeholder="Téléphone" name="telephone"> <br>
+        <input type="text" placeholder="Ville" name="ville"> <br>
+        <input type="text" placeholder="Code Postal" name="codepostal"> <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <ul class="adresse">
+        <% for(var i=0; i<adresse.length; i++) {%>
+            <li class="client">
+                <form <%= 'action=modifier/'+ adresse[i]._id %> method="POST">
+                    <input type="text" placeholder="Prénom" name="prenom" value=<%= adresse[i].prenom %>> <br>
+                    <input type="text" placeholder="Nom" name="nom" value=<%= adresse[i].nom %>> <br>
+                    <input type="text" placeholder="Téléphone" name="telephone" value=<%= adresse[i].telephone %>> <br>
+                    <input type="text" placeholder="Ville" name="ville" value=<%= adresse[i].ville %>> <br>
+                    <input type="text" placeholder="Code Postal" name="codepostal" value=<%= adresse[i].codepostal %>> <br>
+                    <button type="submit">Modifier</button>
+                </form>
+                <a <%= 'href=detruire/'+ adresse[i]._id %> >Suppression</a>
+            </li>
+        <% } %>
+    </ul>
+
+</body>
+</html>
